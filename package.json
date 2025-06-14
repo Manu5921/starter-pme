@@ -19,7 +19,8 @@
     "deploy:check": "tsx scripts/deploy-production.ts",
     "generate:secret": "tsx scripts/generate-auth-secret.ts",
     "vercel:deploy": "tsx scripts/vercel-deploy.ts",
-    "vercel:env": "tsx scripts/setup-vercel-env.ts"
+    "vercel:env": "tsx scripts/setup-vercel-env.ts",
+    "vercel:auto": "tsx scripts/vercel-auto-deploy.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
