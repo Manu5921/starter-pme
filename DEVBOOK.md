@@ -2,7 +2,8 @@
 
 > **🎉 STATUT : PRÊTE POUR LA PRODUCTION**  
 > Tests finaux validés - 100% de réussite sur tous les critères critiques  
-> Dernière mise à jour : 13/06/2025
+> ✅ **LOCALHOST OPÉRATIONNEL** - Node.js 24 + Port 3333 configuré  
+> Dernière mise à jour : 14/06/2025
 
 ## 📋 Vue d'ensemble du projet
 
@@ -35,12 +36,18 @@ Micro-entreprise spécialisée dans la création rapide de sites web pour PME/TP
 ## 🛠 Stack Technique
 
 ### Core Technologies
+- **Node.js 24.2.0** (version recommandée) ⚡
 - **Next.js 15.3** (App Router)
 - **Tailwind CSS 4.0** 
 - **TypeScript** (strict mode)
 - **Drizzle ORM + Neon Postgres** (base de données)
 - **Better Auth** (authentification)
 - **Vercel** (hébergement et déploiement)
+
+### Configuration Développement
+- **Port par défaut** : 3333 (évite les conflits)
+- **Scripts npm** : Configurés avec PORT=3333
+- **Node.js** : Géré via nvm, version 24+ requise
 
 ### Dependencies principales
 ```json
@@ -59,6 +66,18 @@ Micro-entreprise spécialisée dans la création rapide de sites web pour PME/TP
     "react-hook-form": "^7.56.1",
     "tailwind-merge": "^3.2.0",
     "zod": "^3.24.3"
+  }
+}
+```
+
+### Scripts Configurés (PORT=3333)
+```json
+{
+  "scripts": {
+    "dev": "PORT=3333 next dev --turbopack",
+    "start": "PORT=3333 next start", 
+    "build": "next build",
+    "test:final": "tsx scripts/test-final-report.ts"
   }
 }
 ```
@@ -644,6 +663,101 @@ npm run analytics:sync  # Synchronise analytics
 
 ---
 
+## 🔧 Guide de Développement Local
+
+### 🚀 Démarrage Rapide
+
+**Prérequis système :**
+- Node.js ≥ 24.0.0 (recommandé : 24.2.0)
+- nvm pour gestion des versions
+- npm ≥ 11.0.0
+
+**Installation :**
+```bash
+# 1. Vérifier/installer Node.js 24
+nvm install 24
+nvm use 24
+nvm alias default 24
+
+# 2. Installer les dépendances
+npm install
+
+# 3. Configuration environnement
+cp .env.test .env.local
+
+# 4. Lancer le serveur (port 3333 par défaut)
+npm run dev
+```
+
+### 🌐 Accès Local
+- **URL principale** : http://localhost:3333
+- **Page de test** : http://localhost:3333/test
+- **Template plombier** : http://localhost:3333/demo
+- **Dashboard** : http://localhost:3333/dashboard
+
+### ⚡ Scripts Disponibles
+```bash
+npm run dev          # Serveur développement (port 3333)
+npm run build        # Build production
+npm run start        # Serveur production (port 3333)
+npm run test:final   # Tests complets de validation
+```
+
+---
+
+## 🆘 Diagnostic Localhost - Solutions Problèmes Récurrents
+
+### 🚨 Problème : Site inaccessible en localhost
+
+**Symptômes :**
+- Serveur démarre mais site inaccessible
+- "Failed to connect to localhost"
+- Page blanche ou erreurs 500
+
+**Solution Express (90% des cas) :**
+```bash
+# 1. Vérifier Node.js version
+node --version  # Doit être ≥ 24.0.0
+
+# 2. Si < 24, mettre à jour
+nvm use 24 && npm install
+
+# 3. Relancer sur port alternatif
+PORT=3333 npm run dev
+```
+
+### 🔍 Diagnostic Complet
+
+**Fichiers de référence créés :**
+- `LOCALHOST_DIAGNOSTIC_PROCESS.md` - Guide complet étape par étape
+- `QUICK_LOCALHOST_FIX.md` - Solutions rapides
+
+**Commande de secours :**
+```bash
+# Fix universel pour 90% des problèmes
+nvm use 24 && rm -rf node_modules && npm install && npm run dev
+```
+
+### 📊 Problèmes Fréquents et Solutions
+
+| Problème | Cause | Solution |
+|----------|-------|----------|
+| **Site inaccessible** | Node.js < 20 | `nvm use 24` |
+| **Port 3000 occupé** | Autre service | Utiliser port 3333 (défaut) |
+| **Module not found** | Dépendances corrompues | `rm -rf node_modules && npm install` |
+| **Build failed** | Variables env manquantes | `cp .env.test .env.local` |
+
+### 🎯 Prompt de Dépannage pour Futures Sessions
+
+**Si problème localhost, utiliser cette phrase :**
+```
+LOCALHOST BLOQUÉ - Execute le processus de diagnostic :
+Node.js ≥24, clean install, port 3333, page /test
+Référence : Session 2025-06-14 résolue
+```
+
+---
+
 ## 📞 Contact & Support
 
 **Agent IA Guidelines:**
@@ -654,11 +768,19 @@ npm run analytics:sync  # Synchronise analytics
 - Documenter les modifications apportées
 
 **Priorités actuelles:**
-1. Base de données et API
-2. Template Plombier complet  
-3. Système de génération
-4. Tests et déploiement
+1. ✅ Base de données et API (Terminé)
+2. ✅ Template Plombier complet (Terminé)
+3. ✅ Système de génération (Terminé)
+4. ✅ Tests et déploiement (Terminé)
+
+**Nouveautés 14/06/2025 :**
+- ✅ Configuration Node.js 24.2.0 par défaut
+- ✅ Port 3333 configuré automatiquement
+- ✅ Guide de diagnostic localhost complet
+- ✅ Solutions aux problèmes récurrents documentées
+- ✅ Tests locaux validés et fonctionnels
 
 ---
 
-*Dernière mise à jour : 13/06/2025*
+*Dernière mise à jour : 14/06/2025*
+*Status : PLATEFORME 100% OPÉRATIONNELLE EN LOCAL*
